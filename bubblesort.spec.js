@@ -1,6 +1,10 @@
 describe('Bubble Sort', function(){
+  let unsortedArray = [];
+  let bubbleSortObj = new bubbleSort(unsortedArray);
+  let sortedArray = [];
+
   it('handles an empty array', function(){
-    expect( bubbleSort([]) ).toEqual( [] );
+    expect( bubbleSortObj.bubbleSort() ).toEqual( [] );
   });
 });
 
@@ -10,22 +14,22 @@ describe('Bubble Sort', function(){
   let bubbleSortObj = new bubbleSort(unsortedArray);
   let sortedArray = [1,2,3,4,5];
 
-  it('sorts an array', function(){
-    expect(bubbleSortObj.bubbleSort()).toEqual(sortedArray);
+  beforeEach(function () {
+    spyOn(bubbleSortObj, 'swap').and.callThrough();
+    spyOn(bubbleSortObj, 'compare').and.callThrough();
   });
 
+  it('sorts an array', function(){
+    bubbleSortObj.bubbleSort();
+    expect(bubbleSortObj.bubbleSort()).toEqual(sortedArray);
+  });
+  
   it ('calls swap function the correct number of times', function() {
-
-    spyOn(bubbleSortObj, 'swap').and.callThrough();
-
     bubbleSortObj.bubbleSort();
     expect(bubbleSortObj.swap.calls.count()).toEqual(10);
   })
 
   it ('calls the compare function the correct number of times', function() {
-
-    spyOn(bubbleSortObj, 'compare').and.callThrough();
-
     bubbleSortObj.bubbleSort();
     expect(bubbleSortObj.compare.calls.count()).toEqual(10);
   })
