@@ -1,4 +1,3 @@
-
 describe('Bubble Sort', function(){
   it('handles an empty array', function(){
     expect( bubbleSort([]) ).toEqual( [] );
@@ -35,6 +34,11 @@ describe('Bubble Sort', function(){
 
 
 describe('Bubble Sort', function(){
+  let unsortedArray = [8,4,6,20,5];
+  let bubbleSortObj = new bubbleSort(unsortedArray);
+  let sortedArray = [4,5,6,8,20];
+
   it('sorts a randomly assorted array', function(){
-    expect( bubbleSort([8,4,6,20,5])).toEqual([4,5,6,8,20]);
-  });
+    expect(bubbleSortObj.bubbleSort()).toEqual(sortedArray);
+  })
+});
